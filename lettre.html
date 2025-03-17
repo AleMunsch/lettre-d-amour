@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre pour ma futur femme</title>
+    <link rel="icon" href="img/coeur.png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1c1b22;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .envelope {
+            position: absolute;
+            width: 600px;
+            height: 400px;
+            background: white;
+            border: 2px solid #555;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: white;
+            border-top: 2px solid #555;
+            border-left: 2px solid #555;
+            border-right: 2px solid #555;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            transition: transform 0.5s ease;
+            transform-origin: top;
+            z-index: 4;
+        }
+        .flap-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            z-index: 3;
+        }
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+        }
+        .heart {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            width: 30px;
+            height: 30px;
+            background: #e60073;
+            clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 75%, 15% 100%, 0% 35%);
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+        .envelope.open .heart {
+            opacity: 0;
+        }
+        .card {
+            position: absolute;
+            width: 390px;
+            height: 590px;
+            background: white;
+            top: -50px;
+            left: 60%;
+            transform: translateX(-50%) translateY(100%) scaleY(0);
+            transition: transform 0.5s ease 0.5s;
+            border: 1px solid #555;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            transform-origin: top;
+            z-index: 3;
+        }
+        .envelope.open + .card {
+            transform: translateX(-50%) translateY(0%) scaleY(1);
+            opacity: 1;
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+        }
+        .page {
+            width: 100%;
+            height: 590px;
+            background: white;
+            position: absolute;
+            top: 0;
+            transition: transform 1s ease-in-out;
+            transform-origin: left;
+            border-left: 3px solid rgb(209, 209, 209);
+            z-index: 4;
+            backface-visibility: hidden;
+        }
+        .page.left {
+            left: 0;
+            transform: rotateY(0deg);
+            z-index: 5;
+            background: white;
+            backface-visibility: visible;
+        }
+        .card.open .page.left {
+            transform: rotateY(-180deg);
+            height: 590px;
+            background-color: white;
+            backface-visibility: visible;
+        }
+        .content {
+            position: absolute;
+            width: 100%;
+            height: 590px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-family: cursive;
+        }
+        .centered-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 30px;
+            font-family: cursive;
+        }
+        .left-aligned-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100%;
+            width: 385px;
+            padding: 5px 0px 0px 5px;
+            text-align: left;
+        }
+        .page.left .front-content {
+            opacity: 1;
+            transition: opacity 1.75s ease;
+        }
+        .card.open .page.left .front-content {
+            opacity: 0;
+        }
+        .page.left .back-content {
+            opacity: 0;
+            transform: rotateY(180deg);
+            transition: opacity 1.75s ease;
+        }
+        .card.open .page.left .back-content {
+            opacity: 1;
+            display: flex;
+            align-items: flex-start;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap-shadow"></div>
+            <div class="flap"></div>
+            <div class="heart">❤️</div>
+        </div>
+        <div class="card" onclick="openCard()">
+            <div class="card-inner">
+                <div class="page left">
+                    <div class="content front-content centered-text">
+                        <p>Bae</p>
+                        <p> je t'aime ❤️</p>
+                    </div>
+                    <div class="content back-content">
+                        <div class="left-aligned-text">
+                            <p>Pour Bae (Éléa ouais toi là),</p>
+                            <p>
+                                Depuis le jour où nos chemins se sont croisés, ma vie a pris un tournant que je n’aurais jamais imaginé. 
+                                Tu es arrivée comme une lumière dans mon quotidien, et avec toi, j’ai retrouvé des couleurs que je pensais perdues.
+                                Tu m'apporte un bonheur sincère, une paix que je ne connaissais pas, et un amour dont je n’osais rêver.
+                            </p>
+                            <p>
+                                Tu es là, chaque jour, à mes côtés, même quand mes failles prennent le dessus. 
+                                Même quand mes peurs et mes doutes viennent assombrir mon esprit, toi, tu restes. 
+                                Tu trouves toujours le moyen d’apaiser mes tempêtes, de me rappeler que je ne suis pas seul. 
+                                Grâce à toi, je souris à nouveau, et ce sourire, c’est toi qui l’as ramené.
+                            </p>
+                            <p>
+                                Je veux te dire merci. 
+                                Merci de rester, merci de m’aimer avec autant de force, malgré mes silences et mes moments de repli. 
+                                Je suis désolé pour toutes ces fois où j’ai laissé ma déprime prendre le dessus, pour ces moments où j’aurais dû être plus attentif à toi. 
+                                Tu mérites tellement mieux que mes dérives émotionnelles, c'est pourquoi je promets de faire de mon mieux pour ne plus jamais te faire subir ça.
+                            </p>
+                            <p>❤️</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content left-aligned-text">
+                    <p>
+                    Je sais que mon manque de communication t’a parfois blessée, que ne parler que des belles choses et garder le reste pour moi n’a fait qu’alimenter tes peurs. 
+                    Je ne veux plus que tu ressentes ça. 
+                    Je veux être plus ouvert avec toi, partager non seulement les joies mais aussi les doutes, les soucis. 
+                    Parce que tu as le droit de savoir, et parce que je veux qu’on affronte tout ensemble, main dans la main.
+                    </p>
+                    <p>
+                    Je suis fier de toi, tellement fier. 
+                    En six mois, j’ai vu la femme incroyable que tu es, affronter certaines de ses peurs et avancer avec une force qui m’émerveille.
+                    Et je serai là, toujours, pour t’aider à combattre tes peurs, à surmonter chaque obstacle. 
+                    Je suis aussi fier de ton parcours, de tes réussites, de ces résultats qui te rapprochent un peu plus chaque jour de ton rêve.
+                    Bientôt (façon de parler), je te verrai réaliser ce que tu as toujours voulu, et ce jour-là, je serai le premier, à t’aimer encore plus, à t’applaudir, à te soutenir, à t'admirer.
+                    </p>
+                    <p>
+                    Et justement, cet amour… Il grandit un peu plus chaque jour. 
+                    Il n’a pas de limites, pas de fin, juste une intensité qui ne cesse de s’amplifier. 
+                    Tu es mon tout, mon refuge, mon évidence. 
+                    À mes yeux, tu es presque parfaite, et ce qui te rend si unique, ce sont ces petits défauts qui se mélangent à tes qualités pour former la personne que j’aime tant. 
+                    Il n’y a pas un seul détail chez toi que je n’adore pas, pas un seul instant où je ne me sens pas reconnaissant de t’avoir dans ma vie.
+                    </p>
+                    <p>
+                    Je t’aime, infiniment. Et ce n’est que le début.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openEnvelope() {
+            document.querySelector('.envelope').classList.toggle('open');
+        }
+        function openCard() {
+            document.querySelector('.card').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
