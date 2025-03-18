@@ -13,6 +13,7 @@
             height: 100vh;
             background-color: #1c1b22;
             overflow: hidden;
+            margin: 0;
         }
         .container {
             position: relative;
@@ -178,6 +179,66 @@
             align-items: flex-start;
         }
 
+        /* Media Queries for smaller screens */
+        @media (max-width: 1024px) {
+            .envelope {
+                width: 500px;
+                height: 350px;
+            }
+            .card {
+                width: 320px;
+                height: 500px;
+            }
+            .page {
+                height: 500px;
+            }
+            .content {
+                font-size: 12px;
+            }
+            .centered-text {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .envelope {
+                width: 400px;
+                height: 300px;
+            }
+            .card {
+                width: 280px;
+                height: 450px;
+            }
+            .page {
+                height: 450px;
+            }
+            .content {
+                font-size: 10px;
+            }
+            .centered-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope {
+                width: 300px;
+                height: 250px;
+            }
+            .card {
+                width: 240px;
+                height: 400px;
+            }
+            .page {
+                height: 400px;
+            }
+            .content {
+                font-size: 8px;
+            }
+            .centered-text {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -185,7 +246,7 @@
         <div class="envelope" onclick="openEnvelope()">
             <div class="flap-shadow"></div>
             <div class="flap"></div>
-            <div class="heart">❤️</div>
+            <div class="heart"></div>
         </div>
         <div class="card" onclick="openCard()">
             <div class="card-inner">
