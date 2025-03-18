@@ -13,20 +13,19 @@
             height: 100vh;
             background-color: #1c1b22;
             overflow: hidden;
-            margin: 0;
         }
         .container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: min(90vw, 600px);
+            height: min(90vh, 600px);
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .envelope {
             position: absolute;
-            width: 600px;
-            height: 400px;
+            width: min(80vw, 600px);
+            height: min(60vw, 400px);
             background: white;
             border: 2px solid #555;
             border-radius: 5px;
@@ -44,8 +43,6 @@
             height: 50%;
             background: white;
             border-top: 2px solid #555;
-            border-left: 2px solid #555;
-            border-right: 2px solid #555;
             clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
             transition: transform 0.5s ease;
             transform-origin: top;
@@ -69,10 +66,10 @@
             top: 60%;
             left: 50%;
             transform: translate(-50%, -50%) scale(1.2);
-            width: 30px;
-            height: 30px;
+            width: 5vw;
+            height: 5vw;
             background: #e60073;
-            clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 75%, 15% 100%, 0% 35%);
+            clip-path: polygon(50% 15%, 61% 3%, 75% 0%, 90% 10%, 100% 30%, 95% 50%, 85% 65%, 50% 100%, 15% 65%, 5% 50%, 0% 30%, 10% 10%, 25% 0%, 39% 3%);
             transition: opacity 0.3s ease;
             z-index: 5;
         }
@@ -81,11 +78,11 @@
         }
         .card {
             position: absolute;
-            width: 390px;
-            height: 590px;
+            width: min(90vw, 390px);
+            height: min(90vh, 590px);
             background: white;
-            top: -50px;
-            left: 60%;
+            top: 0;
+            left: 50%;
             transform: translateX(-50%) translateY(100%) scaleY(0);
             transition: transform 0.5s ease 0.5s;
             border: 1px solid #555;
@@ -179,66 +176,6 @@
             align-items: flex-start;
         }
 
-        /* Media Queries for smaller screens */
-        @media (max-width: 1024px) {
-            .envelope {
-                width: 500px;
-                height: 350px;
-            }
-            .card {
-                width: 320px;
-                height: 500px;
-            }
-            .page {
-                height: 500px;
-            }
-            .content {
-                font-size: 12px;
-            }
-            .centered-text {
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .envelope {
-                width: 400px;
-                height: 300px;
-            }
-            .card {
-                width: 280px;
-                height: 450px;
-            }
-            .page {
-                height: 450px;
-            }
-            .content {
-                font-size: 10px;
-            }
-            .centered-text {
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .envelope {
-                width: 300px;
-                height: 250px;
-            }
-            .card {
-                width: 240px;
-                height: 400px;
-            }
-            .page {
-                height: 400px;
-            }
-            .content {
-                font-size: 8px;
-            }
-            .centered-text {
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 <body>
